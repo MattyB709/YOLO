@@ -3,6 +3,7 @@
 # Works only with YOLO format
 
 import os
+import argparse
 def generate_empty_labels(base_dir):
     for file in os.listdir(os.path.join(base_dir, "images", "train")):
         file_name = os.path.splitext(file)[0]
@@ -18,4 +19,8 @@ def generate_empty_labels(base_dir):
             print(label_path)
             open(label_path, "w").close()
 
-generate_empty_labels(".\\PPE_360")
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("path")
+    args = parser.parse_args()
+    generate_empty_labels(args.path)
