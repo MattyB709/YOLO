@@ -1,4 +1,4 @@
-path: data/PPE_360
+path: data/ppe_500
 train: "train"
 validation: "Validation"
 
