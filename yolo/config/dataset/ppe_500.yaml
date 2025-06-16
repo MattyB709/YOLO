@@ -1,0 +1,6 @@
+path: data/PPE_360
+train: "train"
+validation: "Validation"
+
+class_num: 4
+class_list: ['Lab-Coat', 'No-Coat', 'Eyewear', 'No-Eyewear']

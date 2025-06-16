@@ -112,7 +112,7 @@ dmypy.json
 
 # Machine learning specific folders and symlinks
 runs
-/data
+# /data
 /datasets
 */data
 
