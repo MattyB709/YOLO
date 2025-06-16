@@ -148,3 +148,6 @@ node_modules/
 
 # Not ignore image for demo
 !demo/images/*/*.png
+
+data/ppe_500
+*.zip
