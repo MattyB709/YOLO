@@ -1,6 +1,6 @@
 import sys
 from pathlib import Path
-
+import torch
 import hydra
 from lightning import Trainer
 
@@ -33,13 +33,14 @@ def main(cfg: Config):
     if cfg.task.task == "train":
         model = TrainModel(cfg)
         trainer.fit(model)
+        
     if cfg.task.task == "validation":
         model = ValidateModel(cfg)
         trainer.validate(model)
     if cfg.task.task == "inference":
         model = InferenceModel(cfg)
         trainer.predict(model)
-
+    
 
 if __name__ == "__main__":
     main()
