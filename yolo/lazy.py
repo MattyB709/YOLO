@@ -1,6 +1,8 @@
 import sys
 from pathlib import Path
 import torch
+from torch.onnx import export
+
 import hydra
 from lightning import Trainer
 
@@ -33,6 +35,19 @@ def main(cfg: Config):
     if cfg.task.task == "train":
         model = TrainModel(cfg)
         trainer.fit(model)
+    
+        # Export to ONNX  
+        dummy_input = torch.ones((1, 3, 640, 640))  
+        output_path = "model.onnx"
+        export(  
+            model,  
+            dummy_input,  
+            output_path,  
+            input_names=["input"],  
+            output_names=["output"],  
+            dynamic_axes={"input": {0: "batch_size"}, "output": {0: "batch_size"}},  
+        )  
+        print(f"ONNX model saved to {output_path}")
         
     if cfg.task.task == "validation":
         model = ValidateModel(cfg)
