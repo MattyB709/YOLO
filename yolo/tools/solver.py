@@ -85,6 +85,7 @@ class TrainModel(ValidateModel):
         self.vec2box.update(self.cfg.image_size)
 
     def training_step(self, batch, batch_idx):
+        print("test")
         lr_dict = self.trainer.optimizers[0].next_batch()
         batch_size, images, targets, *_ = batch
         predicts = self(images)

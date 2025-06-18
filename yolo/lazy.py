@@ -35,10 +35,10 @@ def main(cfg: Config):
     if cfg.task.task == "train":
         model = TrainModel(cfg)
         trainer.fit(model)
-    
+        model.eval()
         # Export to ONNX  
         dummy_input = torch.ones((1, 3, 640, 640))  
-        output_path = "model.onnx"
+        output_path = "onnx/model2.onnx"
         export(  
             model,  
             dummy_input,  
